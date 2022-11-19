@@ -1,4 +1,5 @@
 import tensorflow as tf
+import numpy as np
 import json
 import os
 from dotenv import load_dotenv
@@ -16,7 +17,7 @@ class HoloLingoModel():
 
     def apply_model_on_coordinates(self, coordinates):
         predictions = (self._model
-                            .predict(coordinates)
+                            .predict(np.array(coordinates))
                             .tolist())
         
         return self._create_response(predictions)
