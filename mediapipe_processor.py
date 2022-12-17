@@ -22,8 +22,8 @@ class MediaPipeProcessor():
         if not os.path.exists(self._TMP):
             os.mkdir(self._TMP)
 
-    def get_coordinates(self, request_video):
-        video_path = os.path.join(self._TMP, f'{str(uuid.uuid4())}.mp4')
+    def get_coordinates(self, request_video, video_format):
+        video_path = os.path.join(self._TMP, f'{str(uuid.uuid4())}.{video_format}')
         self._save_tmp_video(video_path, request_video)
         coordinates = self._process_video(video_path)
         self._delete_tmp_video(video_path)
