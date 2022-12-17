@@ -29,7 +29,6 @@ class HoloLingoModel():
 
     def _format_predictions(self, model_predictions):
         formatted_predictions = []
-
         for model_prediction in model_predictions:
             formatted_predictions.append(
                 {label: prediction for (label, prediction) in zip(self._LABELS, model_prediction)}
