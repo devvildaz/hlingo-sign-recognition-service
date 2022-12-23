@@ -25,7 +25,7 @@ instrumentator.add(
         should_include_method=True,
         should_include_status=True,
         metric_namespace="request_size",
-        metric_subsystem="hlingo-srs",
+        metric_subsystem="hlingo_lsp",
     )
 ).add(
     metrics.response_size(
@@ -33,11 +33,12 @@ instrumentator.add(
         should_include_method=True,
         should_include_status=True,
         metric_namespace="response_size",
-        metric_subsystem="hlingo-srs",
+        metric_subsystem="hlingo_lsp",
     )
 )
 hololingo = HoloLingoModel()
 processor = MediaPipeProcessor()
+instrumentator.instrument(app).expose(app)
 
 @app.get("/status")
 def status():
